@@ -1,16 +1,5 @@
 <!doctype html>
 <html lang="en">
-	<style>
-/* Reduz o tamanho dos rótulos (labels) gerados pelo qgis2web */
-.leaflet-tooltip {
-  font-size: 10px !important;  /* ajuste conforme preferir: 8px, 9px, 10px, etc. */
-  font-weight: normal;
-  background-color: rgba(255,255,255,0.8);
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 2px 4px;
-}
-</style>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +42,7 @@
         <script src="data/REA3ACONTRATAR_1.js"></script>
         <script src="data/REA2SANDROCALDEIRAS_2.js"></script>
         <script src="data/REA1ADILROSENDO_3.js"></script>
-        <script src="data/CONCORRENTES_14.js"></script>
+        <script src="data/CONCORRENTES_7.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -73,7 +62,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-20.73891952800942,-48.61067671523347],[-14.77956904333324,-36.05256045782572]]);
+        })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -153,6 +142,9 @@
         document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
         }
         function pop_AREAGVOFICIAL_0(feature, layer) {
             layer.on({
@@ -238,7 +230,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(195,195,195,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_AREAGVOFICIAL_0');
@@ -246,7 +238,7 @@
         map.getPane('pane_AREAGVOFICIAL_0').style['mix-blend-mode'] = 'normal';
         var layer_AREAGVOFICIAL_0 = new L.geoJson(json_AREAGVOFICIAL_0, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_AREAGVOFICIAL_0',
             layerName: 'layer_AREAGVOFICIAL_0',
             pane: 'pane_AREAGVOFICIAL_0',
@@ -254,7 +246,6 @@
             style: style_AREAGVOFICIAL_0_0,
         });
         bounds_group.addLayer(layer_AREAGVOFICIAL_0);
-        map.addLayer(layer_AREAGVOFICIAL_0);
         function pop_REA3ACONTRATAR_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -355,7 +346,6 @@
             style: style_REA3ACONTRATAR_1_0,
         });
         bounds_group.addLayer(layer_REA3ACONTRATAR_1);
-        map.addLayer(layer_REA3ACONTRATAR_1);
         function pop_REA2SANDROCALDEIRAS_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -456,7 +446,6 @@
             style: style_REA2SANDROCALDEIRAS_2_0,
         });
         bounds_group.addLayer(layer_REA2SANDROCALDEIRAS_2);
-        map.addLayer(layer_REA2SANDROCALDEIRAS_2);
         function pop_REA1ADILROSENDO_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -557,7 +546,6 @@
             style: style_REA1ADILROSENDO_3_0,
         });
         bounds_group.addLayer(layer_REA1ADILROSENDO_3);
-        map.addLayer(layer_REA1ADILROSENDO_3);
         map.createPane('pane_MAPADECALORLEITEGV_4');
         map.getPane('pane_MAPADECALORLEITEGV_4').style.zIndex = 404;
         var img_MAPADECALORLEITEGV_4 = 'data/MAPADECALORLEITEGV_4.png';
@@ -574,78 +562,15 @@
                                               img_bounds_MAPADECALORREBANHOGV_5,
                                               {pane: 'pane_MAPADECALORREBANHOGV_5'});
         bounds_group.addLayer(layer_MAPADECALORREBANHOGV_5);
-        map.createPane('pane_MAPADECALORPQTRATORES50GV_6');
-        map.getPane('pane_MAPADECALORPQTRATORES50GV_6').style.zIndex = 406;
-        var img_MAPADECALORPQTRATORES50GV_6 = 'data/MAPADECALORPQTRATORES50GV_6.png';
-        var img_bounds_MAPADECALORPQTRATORES50GV_6 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPQTRATORES50GV_6 = new L.imageOverlay(img_MAPADECALORPQTRATORES50GV_6,
-                                              img_bounds_MAPADECALORPQTRATORES50GV_6,
-                                              {pane: 'pane_MAPADECALORPQTRATORES50GV_6'});
-        bounds_group.addLayer(layer_MAPADECALORPQTRATORES50GV_6);
-        map.addLayer(layer_MAPADECALORPQTRATORES50GV_6);
-        map.createPane('pane_MAPADECALORAREAPLANTADATOTALGV_7');
-        map.getPane('pane_MAPADECALORAREAPLANTADATOTALGV_7').style.zIndex = 407;
-        var img_MAPADECALORAREAPLANTADATOTALGV_7 = 'data/MAPADECALORAREAPLANTADATOTALGV_7.png';
-        var img_bounds_MAPADECALORAREAPLANTADATOTALGV_7 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORAREAPLANTADATOTALGV_7 = new L.imageOverlay(img_MAPADECALORAREAPLANTADATOTALGV_7,
-                                              img_bounds_MAPADECALORAREAPLANTADATOTALGV_7,
-                                              {pane: 'pane_MAPADECALORAREAPLANTADATOTALGV_7'});
-        bounds_group.addLayer(layer_MAPADECALORAREAPLANTADATOTALGV_7);
-        map.addLayer(layer_MAPADECALORAREAPLANTADATOTALGV_7);
-        map.createPane('pane_MAPADECALORPRODTON_8');
-        map.getPane('pane_MAPADECALORPRODTON_8').style.zIndex = 408;
-        var img_MAPADECALORPRODTON_8 = 'data/MAPADECALORPRODTON_8.png';
-        var img_bounds_MAPADECALORPRODTON_8 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPRODTON_8 = new L.imageOverlay(img_MAPADECALORPRODTON_8,
-                                              img_bounds_MAPADECALORPRODTON_8,
-                                              {pane: 'pane_MAPADECALORPRODTON_8'});
-        bounds_group.addLayer(layer_MAPADECALORPRODTON_8);
-        map.createPane('pane_MAPADECALORPIBAGRGV_9');
-        map.getPane('pane_MAPADECALORPIBAGRGV_9').style.zIndex = 409;
-        var img_MAPADECALORPIBAGRGV_9 = 'data/MAPADECALORPIBAGRGV_9.png';
-        var img_bounds_MAPADECALORPIBAGRGV_9 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPIBAGRGV_9 = new L.imageOverlay(img_MAPADECALORPIBAGRGV_9,
-                                              img_bounds_MAPADECALORPIBAGRGV_9,
-                                              {pane: 'pane_MAPADECALORPIBAGRGV_9'});
-        bounds_group.addLayer(layer_MAPADECALORPIBAGRGV_9);
-        map.addLayer(layer_MAPADECALORPIBAGRGV_9);
-        map.createPane('pane_MAPADECALORPRODCAFEARABICAGV_10');
-        map.getPane('pane_MAPADECALORPRODCAFEARABICAGV_10').style.zIndex = 410;
-        var img_MAPADECALORPRODCAFEARABICAGV_10 = 'data/MAPADECALORPRODCAFEARABICAGV_10.png';
-        var img_bounds_MAPADECALORPRODCAFEARABICAGV_10 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPRODCAFEARABICAGV_10 = new L.imageOverlay(img_MAPADECALORPRODCAFEARABICAGV_10,
-                                              img_bounds_MAPADECALORPRODCAFEARABICAGV_10,
-                                              {pane: 'pane_MAPADECALORPRODCAFEARABICAGV_10'});
-        bounds_group.addLayer(layer_MAPADECALORPRODCAFEARABICAGV_10);
-        map.addLayer(layer_MAPADECALORPRODCAFEARABICAGV_10);
-        map.createPane('pane_MAPADECALORPRODCAFECANEPHORAGV_11');
-        map.getPane('pane_MAPADECALORPRODCAFECANEPHORAGV_11').style.zIndex = 411;
-        var img_MAPADECALORPRODCAFECANEPHORAGV_11 = 'data/MAPADECALORPRODCAFECANEPHORAGV_11.png';
-        var img_bounds_MAPADECALORPRODCAFECANEPHORAGV_11 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPRODCAFECANEPHORAGV_11 = new L.imageOverlay(img_MAPADECALORPRODCAFECANEPHORAGV_11,
-                                              img_bounds_MAPADECALORPRODCAFECANEPHORAGV_11,
-                                              {pane: 'pane_MAPADECALORPRODCAFECANEPHORAGV_11'});
-        bounds_group.addLayer(layer_MAPADECALORPRODCAFECANEPHORAGV_11);
-        map.addLayer(layer_MAPADECALORPRODCAFECANEPHORAGV_11);
-        map.createPane('pane_MAPADECALORPRODMILHOGV_12');
-        map.getPane('pane_MAPADECALORPRODMILHOGV_12').style.zIndex = 412;
-        var img_MAPADECALORPRODMILHOGV_12 = 'data/MAPADECALORPRODMILHOGV_12.png';
-        var img_bounds_MAPADECALORPRODMILHOGV_12 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
-        var layer_MAPADECALORPRODMILHOGV_12 = new L.imageOverlay(img_MAPADECALORPRODMILHOGV_12,
-                                              img_bounds_MAPADECALORPRODMILHOGV_12,
-                                              {pane: 'pane_MAPADECALORPRODMILHOGV_12'});
-        bounds_group.addLayer(layer_MAPADECALORPRODMILHOGV_12);
-        map.addLayer(layer_MAPADECALORPRODMILHOGV_12);
-        map.createPane('pane_MAPADECALORVENDASGVTOTAL_13');
-        map.getPane('pane_MAPADECALORVENDASGVTOTAL_13').style.zIndex = 413;
-        var img_MAPADECALORVENDASGVTOTAL_13 = 'data/MAPADECALORVENDASGVTOTAL_13.png';
-        var img_bounds_MAPADECALORVENDASGVTOTAL_13 = [[-19.9396678,-43.86943577],[-15.6496678,-39.85843577]];
-        var layer_MAPADECALORVENDASGVTOTAL_13 = new L.imageOverlay(img_MAPADECALORVENDASGVTOTAL_13,
-                                              img_bounds_MAPADECALORVENDASGVTOTAL_13,
-                                              {pane: 'pane_MAPADECALORVENDASGVTOTAL_13'});
-        bounds_group.addLayer(layer_MAPADECALORVENDASGVTOTAL_13);
-        map.addLayer(layer_MAPADECALORVENDASGVTOTAL_13);
-        function pop_CONCORRENTES_14(feature, layer) {
+        map.createPane('pane_MAPADECALORPRODTON_6');
+        map.getPane('pane_MAPADECALORPRODTON_6').style.zIndex = 406;
+        var img_MAPADECALORPRODTON_6 = 'data/MAPADECALORPRODTON_6.png';
+        var img_bounds_MAPADECALORPRODTON_6 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
+        var layer_MAPADECALORPRODTON_6 = new L.imageOverlay(img_MAPADECALORPRODTON_6,
+                                              img_bounds_MAPADECALORPRODTON_6,
+                                              {pane: 'pane_MAPADECALORPRODTON_6'});
+        bounds_group.addLayer(layer_MAPADECALORPRODTON_6);
+        function pop_CONCORRENTES_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -696,13 +621,13 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_CONCORRENTES_14_0(feature) {
+        function style_CONCORRENTES_7_0(feature) {
             switch(String(feature.properties['MARCA'])) {
                 case 'John Deere':
                     return {
-                pane: 'pane_CONCORRENTES_14',
+                pane: 'pane_CONCORRENTES_7',
                 shape: 'triangle',
-                radius: 8.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(61,128,53,1.0)',
                 dashArray: '',
@@ -712,13 +637,13 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(84,176,74,1.0)',
-                interactive: true,
+                interactive: false,
             }
                     break;
                 case 'Mahindra':
                     return {
-                pane: 'pane_CONCORRENTES_14',
-                radius: 8.0,
+                pane: 'pane_CONCORRENTES_7',
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
                 dashArray: '',
@@ -728,14 +653,14 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(219,30,42,1.0)',
-                interactive: true,
+                interactive: false,
             }
                     break;
                 case 'Massey Ferguson':
                     return {
-                pane: 'pane_CONCORRENTES_14',
+                pane: 'pane_CONCORRENTES_7',
                 shape: 'triangle',
-                radius: 8.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
                 dashArray: '',
@@ -745,13 +670,13 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(219,30,42,1.0)',
-                interactive: true,
+                interactive: false,
             }
                     break;
                 case 'Solis Yanmar':
                     return {
-                pane: 'pane_CONCORRENTES_14',
-                radius: 8.0,
+                pane: 'pane_CONCORRENTES_7',
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(179,92,21,1.0)',
                 dashArray: '',
@@ -761,14 +686,14 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(247,128,30,1.0)',
-                interactive: true,
+                interactive: false,
             }
                     break;
                 case 'Valtra':
                     return {
-                pane: 'pane_CONCORRENTES_14',
+                pane: 'pane_CONCORRENTES_7',
                 shape: 'triangle',
-                radius: 8.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
                 dashArray: '',
@@ -778,48 +703,95 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(255,255,0,1.0)',
-                interactive: true,
+                interactive: false,
             }
                     break;
             }
         }
-        map.createPane('pane_CONCORRENTES_14');
-        map.getPane('pane_CONCORRENTES_14').style.zIndex = 414;
-        map.getPane('pane_CONCORRENTES_14').style['mix-blend-mode'] = 'normal';
-        var layer_CONCORRENTES_14 = new L.geoJson(json_CONCORRENTES_14, {
+        map.createPane('pane_CONCORRENTES_7');
+        map.getPane('pane_CONCORRENTES_7').style.zIndex = 407;
+        map.getPane('pane_CONCORRENTES_7').style['mix-blend-mode'] = 'normal';
+        var layer_CONCORRENTES_7 = new L.geoJson(json_CONCORRENTES_7, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_CONCORRENTES_14',
-            layerName: 'layer_CONCORRENTES_14',
-            pane: 'pane_CONCORRENTES_14',
-            onEachFeature: pop_CONCORRENTES_14,
+            interactive: false,
+            dataVar: 'json_CONCORRENTES_7',
+            layerName: 'layer_CONCORRENTES_7',
+            pane: 'pane_CONCORRENTES_7',
+            onEachFeature: pop_CONCORRENTES_7,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_CONCORRENTES_14_0(feature));
+                return L.shapeMarker(latlng, style_CONCORRENTES_7_0(feature));
             },
         });
-        bounds_group.addLayer(layer_CONCORRENTES_14);
-        map.addLayer(layer_CONCORRENTES_14);
+        bounds_group.addLayer(layer_CONCORRENTES_7);
+        const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
+        "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
+        var photonControl = L.control.photon({
+            url: url["Nominatim OSM"],
+            feedbackLabel: '',
+            position: 'topleft',
+            includePosition: true,
+            initial: true,
+            // resultsHandler: myHandler,
+        }).addTo(map);
+        photonControl._container.childNodes[0].style.borderRadius="10px"
+        // Create a variable to store the geoJSON data
+        var x = null;
+        // Create a variable to store the marker
+        var marker = null;
+        // Add an event listener to the Photon control to create a marker from the returned geoJSON data
+        var z = null;
+        photonControl.on('selected', function(e) {
+            console.log(photonControl.search.resultsContainer);
+            if (x != null) {
+                map.removeLayer(obj3.marker);
+                map.removeLayer(x);
+            }
+            obj2.gcd = e.choice;
+            x = L.geoJSON(obj2.gcd).addTo(map);
+            var label = typeof obj2.gcd.properties.label === 'undefined' ? obj2.gcd.properties.display_name : obj2.gcd.properties.label;
+            obj3.marker = L.marker(x.getLayers()[0].getLatLng()).bindPopup(label).addTo(map);
+            map.setView(x.getLayers()[0].getLatLng(), 17);
+            z = typeof e.choice.properties.label === 'undefined'? e.choice.properties.display_name : e.choice.properties.label;
+            console.log(e);
+            e.target.input.value = z;
+        });
+        var search = document.getElementsByClassName("leaflet-photon leaflet-control")[0];
+        search.classList.add("leaflet-control-search")
+        search.style.display = "flex";
+        search.style.backgroundColor="rgba(255,255,255,0.5)" 
+
+        // Create the new button element
+        var button = document.createElement("div");
+        button.id = "gcd-button-control";
+        button.className = "gcd-gl-btn fa fa-search search-button";
+
+        // Insert the button at the beginning of the search control
+        search.insertBefore(button, search.firstChild);
+        last = search.lastChild;
+        last.style.display = "none";
+        button.addEventListener("click", function (e) {
+            if (last.style.display === "none") {
+                last.style.display = "block";
+            } else {
+                last.style.display = "none";
+            }
+        });
         var overlaysTree = [
-            {label: 'CONCORRENTES<br /><table><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_14_JohnDeere0.png" /></td><td>John Deere</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_14_Mahindra1.png" /></td><td>Mahindra</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_14_MasseyFerguson2.png" /></td><td>Massey Ferguson</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_14_SolisYanmar3.png" /></td><td>Solis Yanmar</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_14_Valtra4.png" /></td><td>Valtra</td></tr></table>', layer: layer_CONCORRENTES_14},
+        {label: '<b>DADOS GERAIS</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: 'CONCORRENTES<br /><table><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_7_JohnDeere0.png" /></td><td>John Deere</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_7_Mahindra1.png" /></td><td>Mahindra</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_7_MasseyFerguson2.png" /></td><td>Massey Ferguson</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_7_SolisYanmar3.png" /></td><td>Solis Yanmar</td></tr><tr><td style="text-align: center;"><img src="legend/CONCORRENTES_7_Valtra4.png" /></td><td>Valtra</td></tr></table>', layer: layer_CONCORRENTES_7},]},
         {label: '<b>MAPAS DE CALOR</b>', collapsed: true, selectAllCheckbox: true, children: [
-            {label: "MAPA DE CALOR - VENDAS GV (TOTAL)", layer: layer_MAPADECALORVENDASGVTOTAL_13},
-            {label: "MAPA DE CALOR - PROD MILHO GV", layer: layer_MAPADECALORPRODMILHOGV_12},
-            {label: "MAPA DE CALOR - PROD CAFE CANEPHORA GV", layer: layer_MAPADECALORPRODCAFECANEPHORAGV_11},
-            {label: "MAPA DE CALOR - PROD CAFE ARABICA GV", layer: layer_MAPADECALORPRODCAFEARABICAGV_10},
-            {label: "MAPA DE CALOR - PIB AGR GV", layer: layer_MAPADECALORPIBAGRGV_9},
-            {label: "MAPA DE CALOR - PROD TON", layer: layer_MAPADECALORPRODTON_8},
-            {label: "MAPA DE CALOR - AREA PLANTADA TOTAL GV", layer: layer_MAPADECALORAREAPLANTADATOTALGV_7},
-            {label: "MAPA DE CALOR - PQ TRATORES 50% GV", layer: layer_MAPADECALORPQTRATORES50GV_6},
+            {label: "MAPA DE CALOR - PROD TON", layer: layer_MAPADECALORPRODTON_6},
             {label: "MAPA DE CALOR - REBANHO GV", layer: layer_MAPADECALORREBANHOGV_5},
             {label: "MAPA DE CALOR - LEITE GV", layer: layer_MAPADECALORLEITEGV_4},]},
+        {label: '<b>ÁREAS DE GV</b>', collapsed: true, selectAllCheckbox: true, children: [
             {label: '<img src="legend/REA1ADILROSENDO_3.png" /> ÁREA 1 - ADIL ROSENDO', layer: layer_REA1ADILROSENDO_3},
             {label: '<img src="legend/REA2SANDROCALDEIRAS_2.png" /> ÁREA 2 - SANDRO CALDEIRAS', layer: layer_REA2SANDROCALDEIRAS_2},
             {label: '<img src="legend/REA3ACONTRATAR_1.png" /> ÁREA 3 - A CONTRATAR', layer: layer_REA3ACONTRATAR_1},
-            {label: '<img src="legend/AREAGVOFICIAL_0.png" /> AREA GV - OFICIAL', layer: layer_AREAGVOFICIAL_0},]
+            {label: '<img src="legend/AREAGVOFICIAL_0.png" /> AREA GV - OFICIAL', layer: layer_AREAGVOFICIAL_0},]},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -895,12 +867,12 @@
               i++;
         });
         var i = 0;
-        layer_CONCORRENTES_14.eachLayer(function(layer) {
+        layer_CONCORRENTES_7.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #323232; font-size: 3000pt; font-family: \'Copperplate Gothic Bold\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CONCORRENTES_14'});
+            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #323232; font-size: 2000pt; font-family: \'Copperplate Gothic Bold\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_CONCORRENTES_7'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -912,15 +884,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_14]);
+        resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_7]);
         map.on("zoomend", function(){
-            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_14]);
+            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_7]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_14]);
+            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_7]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_14]);
+            resetLabels([layer_AREAGVOFICIAL_0,layer_CONCORRENTES_7]);
         });
         </script>        
     </body>
