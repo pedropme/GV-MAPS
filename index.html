@@ -708,6 +708,15 @@
                                               {pane: 'pane_MAPADECALORVENDASGVTOTAL_14'});
         bounds_group.addLayer(layer_MAPADECALORVENDASGVTOTAL_14);
         map.addLayer(layer_MAPADECALORVENDASGVTOTAL_14);
+        map.createPane('pane_AREAGVOFICIAL_1');
+        map.getPane('pane_AREAGVOFICIAL_1').style.zIndex = 413;
+        var img_MAPADECALORPRODMILHOGV_13 = 'data/AREAGVOFICIAL_1.png';
+        var img_bounds_MAPADECALORPRODMILHOGV_13 = [[-19.94,-43.86343577],[-15.65,-39.86343577]];
+        var layer_MAPADECALORPRODMILHOGV_13 = new L.imageOverlay(img_AREAGVOFICIAL_1,
+                                              img_bounds_AREAGVOFICIAL_1,
+                                              {pane: 'pane_AREAGVOFICIAL_1'});
+        bounds_group.addLayer(layer_AREAGVOFICIAL_1);
+        map.addLayer(layer_AREAGVOFICIAL_1);
         function pop_CONCORRENTES_15(feature, layer) {
             layer.on({
                 mouseout: function(e) {
