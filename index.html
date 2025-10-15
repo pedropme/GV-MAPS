@@ -586,7 +586,7 @@
         map.getPane('pane_REA1ADILROSENDO_4').style['mix-blend-mode'] = 'normal';
         var layer_REA1ADILROSENDO_4 = new L.geoJson(json_REA1ADILROSENDO_4, {
             attribution: '',
-            interactive: TRUE,
+            interactive: false,
             dataVar: 'json_REA1ADILROSENDO_4',
             layerName: 'layer_REA1ADILROSENDO_4',
             pane: 'pane_REA1ADILROSENDO_4',
@@ -617,8 +617,8 @@
         var layer_MAPADECALORPQTRATORES50GV_7 = new L.imageOverlay(img_MAPADECALORPQTRATORES50GV_7,
                                               img_bounds_MAPADECALORPQTRATORES50GV_7,
                                               {pane: 'pane_MAPADECALORPQTRATORES50GV_7'});
-		map.addLayer(layer_MAPADECALORPQTRATORES50GV_7);
         bounds_group.addLayer(layer_MAPADECALORPQTRATORES50GV_7);
+        map.addLayer(layer_MAPADECALORPQTRATORES50GV_7);
         map.createPane('pane_MAPADECALORAREAPLANTADATOTALGV_8');
         map.getPane('pane_MAPADECALORAREAPLANTADATOTALGV_8').style.zIndex = 408;
         var img_MAPADECALORAREAPLANTADATOTALGV_8 = 'data/MAPADECALORAREAPLANTADATOTALGV_8.png';
